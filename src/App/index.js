@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-import { Form } from "./currencies";
+import { Form } from "./Form";
 import { currencies } from "./currencies";
 
 function App() {
@@ -21,3 +21,5 @@ function App() {
     </div>
   );
 }
+
+export default App;
