@@ -37,7 +37,7 @@ export const Form = ({ calculateResult, result }) => {
             value={currency}
             onChange={({ target }) => setCurrency(target.value)}
           >
-            {currencies.map((currencies) => (
+            {currencies.map((currency) => (
               <option key={currency.short} value={currency.short}>
                 {currency.name}
               </option>
