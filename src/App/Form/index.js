@@ -10,19 +10,19 @@ export const Form = ({ calculateResult, result }) => {
   const onSubmit = (event) => {
     event.preventDefault();
     calculateResult(currency, amount);
-  };
+  }
 
   return (
-    <from className="from" onSubmit={onSubmit}>
-      <h1 className="from__header">Przelicznik walut</h1>
+    <from className="form" onSubmit={onSubmit}>
+      <h1 className= "form__header">Przelicznik walut</h1>
       <p>
         <label>
-          <span className="from__labelText">Kwota w zł*:</span>
+          <span className="form__labelText">Kwota w zł*:</span>
           <input
             value={amount}
             onChange={({ target }) => setAmount(target.value)}
             placeholder="Wpisz kwotę w zł"
-            className="from__field"
+            className="form__field"
             type="number"
             required
             step="0.01"
@@ -33,20 +33,23 @@ export const Form = ({ calculateResult, result }) => {
         <label>
           <span>Watuta:</span>
           <select
-            className="from__filed"
+            className="form__filed"
             value={currency}
             onChange={({ target }) => setCurrency(target.value)}
           >
-            {currencies.map((currency) => (
-              <option key={currency.short} value={currency.short}>
-                {currency.name}
+            {currencies.map((currency => (
+              <option 
+              key={currency.short} 
+              value={currency.short}
+              >
+                {currency.currencyName}
               </option>
-            ))}
+            )))}
           </select>
         </label>
       </p>
       <p>
-        <button className="from__button"> Przelicz!</button>
+        <button className="form__button"> Przelicz!</button>
       </p>
       <p>
         Kursy pochodzą ze strony internetowej nbp.pl
