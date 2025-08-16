@@ -31,7 +31,9 @@ export const Form = ({ calculateResult, result }) => {
       </p>
       <p>
         <label>
-          <span>Watuta:</span>
+          <span className="form__labelText">
+            Watuta:
+            </span>
           <select
             className="form__filed"
             value={currency}
@@ -42,7 +44,7 @@ export const Form = ({ calculateResult, result }) => {
               key={currency.short} 
               value={currency.short}
               >
-                {currency.currencyName}
+                {currency.Name}
               </option>
             )))}
           </select>
