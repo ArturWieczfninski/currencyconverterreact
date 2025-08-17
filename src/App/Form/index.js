@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { currencies } from "../currencies";
 import { Result } from "./Result";
 import "./style.css";
@@ -14,10 +14,14 @@ export const Form = ({ calculateResult, result }) => {
 
   return (
     <from className="form" onSubmit={onSubmit}>
-      <h1 className= "form__header">Przelicznik walut</h1>
+      <h1 className= "form__header">
+        Przelicznik walut
+        </h1>
       <p>
         <label>
-          <span className="form__labelText">Kwota w zł*:</span>
+          <span className="form__labelText">
+            Kwota w zł*:
+            </span>
           <input
             value={amount}
             onChange={({ target }) => setAmount(target.value)}
@@ -61,3 +65,4 @@ export const Form = ({ calculateResult, result }) => {
     </from>
   );
 };
+

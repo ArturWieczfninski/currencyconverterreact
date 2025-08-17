@@ -1,7 +1,6 @@
-import React from "react";
 import "./style.css";
 
-export const Result = ({result}) => {
+export const Result = ({result}) => (
     <p className="result">
         {result !== undefined && (
             <>
@@ -13,4 +12,4 @@ export const Result = ({result}) => {
             </>
         )}
     </p>
-};
+);
