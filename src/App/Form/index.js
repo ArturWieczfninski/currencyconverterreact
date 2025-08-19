@@ -13,7 +13,7 @@ export const Form = ({ calculateResult, result }) => {
   }
 
   return (
-    <from className="form" onSubmit={onSubmit}>
+    <form className="form" onSubmit={onSubmit}>
       <h1 className= "form__header">
         Przelicznik walut
         </h1>
@@ -62,7 +62,7 @@ export const Form = ({ calculateResult, result }) => {
       </p>
 
       <Result result={result}/>
-    </from>
+    </form>
   );
 };
 
