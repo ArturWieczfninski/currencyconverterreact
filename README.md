@@ -11,7 +11,7 @@ Prosty konwerter walut zbudowany w React. Aplikacja webowa pozwala na szybkie pr
 
 📌 Demo
 
-👉 [Kliknij tutaj, aby uruchomić aplikację](https://arturwieczfninski.github.io/currencyconverterreact/?utm_source=chatgpt.com)
+👉 [Kliknij tutaj, aby uruchomić aplikację](https://arturwieczfninski.github.io/currencyconverterreact/)
 
 ✨ Funkcjonalności
 
