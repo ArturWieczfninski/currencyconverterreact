@@ -1,4 +1,4 @@
-import { Wrapper } from "/styled";
+import { Wrapper } from ".//styled";
 
 export const Result = ({ result}) => {
     <Wrapper>
