@@ -1,7 +1,13 @@
 import { useState } from "react";
 import { currencies } from "../currencies";
 import { Result } from "./Result";
-import "./style.css";
+import {
+  Button,
+  Filed,
+  Header,
+  Info,
+  LabelText,
+} from "./styled"
 
 export const Form = ({ calculateResult, result }) => {
   const [currency, setCurrency] = useState(currencies[0].short);
@@ -13,16 +19,16 @@ export const Form = ({ calculateResult, result }) => {
   }
 
   return (
-    <form className="form" onSubmit={onSubmit}>
-      <h1 className= "form__header">
+    <form  onSubmit={onSubmit}>
+      <Header>
         Przelicznik walut
-        </h1>
+        </Header>
       <p>
         <label>
-          <span className="form__labelText">
+          <LabelText>
             Kwota w złotówkach:
-            </span>
-          <input
+            </LabelText>
+          <Filed        
             value={amount}
             onChange={({ target }) => setAmount(target.value)}
             placeholder="Wpisz kwotę w zł"
@@ -31,15 +37,15 @@ export const Form = ({ calculateResult, result }) => {
             required
             step="0.01"
           />
-        </label>
-      </p>
-      <p>
-        <label>
-          <span className="form__labelText">
-            Watuta:
-            </span>
-          <select
-            className="form__filed"
+            </label>
+              </p>
+              <p>
+              <label>
+          <LabelText>
+            Waluta:
+            </LabelText>
+          <Filed
+            as="select"
             value={currency}
             onChange={({ target }) => setCurrency(target.value)}
           >
@@ -49,20 +55,21 @@ export const Form = ({ calculateResult, result }) => {
               value={currency.short}
               >
                 {currency.Name}
-              </option>
+            </option>
             )))}
-          </select>
+          </Filed>
         </label>
       </p>
       <p>
-        <button className="form__button"> Przelicz!</button>
+        <Button>Przelicz</Button>
       </p>
-      <p>
-        Kursy pochodzą ze strony internetowej nbp.pl
-      </p>
-
-      <Result result={result}/>
+      <Info>
+         Kursy pochodzą ze strony internetowej nbp.pl
+      </Info>
+       <Result result={result}/>
     </form>
+   
+     
   );
 };
 

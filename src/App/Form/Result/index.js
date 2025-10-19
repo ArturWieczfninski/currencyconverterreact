@@ -1,15 +1,15 @@
-import "./style.css";
+import { Wrapper } from "/styled";
 
-export const Result = ({result}) => (
-    <p className="result">
-        {result !== undefined && (
-            <>
-            {result.sourceAmount.toFixed(2)}&nbsp;PLN&nbsp;=
-            {" "}
-            <strong>
-            {result.targetAmount.toFixed(2)}&nbsp;{result.currency}
-            </strong>
-            </>
+export const Result = ({ result}) => {
+    <Wrapper>
+        {!!result && (
+        <>
+        {result.sorceAmount.tofixed(2)}&nbsp;PLN&nbsp;=
+        {" "}
+        <strong>
+        {result.targetAmount.tofixed(2)}&nbsp;{result.currency}
+        </strong>
+        </>
         )}
-    </p>
-);
+    </Wrapper>
+};
