@@ -4,9 +4,11 @@ import background from "./background.jpg";
 export const GlobalStyle = createGlobalStyle`
   html {
     box-sizing: border-box; 
+  
   }
     *, *:before, *:after {
         box-sizing: inherit;
+        margin: 0;
     }
 
     #root {
@@ -18,5 +20,7 @@ export const GlobalStyle = createGlobalStyle`
         background-image: url(${background});
         background-size: cover;
         background-position: center;
+        margin: 0;
+      
     }
 `;
