@@ -20,9 +20,10 @@ export const Button = styled.button`
     color: ${({theme}) => theme.colors.white}; 
     border: none;
     padding: 10px;
-    width: 100%;
+    width: 93%;
     border-radius: 5px;
     transition: 0,3s;
+    margin: 20px;
 
     &:hover {
         filter: brightness(110%);
