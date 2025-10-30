@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { currencies } from "../currencies";
 import { Result } from "./Result";
 import {
   Button,
@@ -7,10 +6,26 @@ import {
   Header,
   Info,
   LabelText,
+  Loading,
+  Failure,
 } from "./styled"
 
-export const Form = ({ calculateResult, result }) => {
-  const [currency, setCurrency] = useState(currencies[0].short);
+import { useRatesDate } from "./Result/useRatesDate";
+
+export const Form = () => {
+  const [result, setResult] = useState();
+  const ratesDate = useRatesDate();
+
+  const calculateResult = (currency, amount) => {
+    const rate = ratesDate.rates[currency];
+    setResult({
+      sorceAmount: +amount,
+      targetAmount: amount * rate,
+      currency,
+    });
+  }
+
+  const [currency, setCurrency] = useState("EUR");
   const [amount, setAmount] = useState("");
 
   const onSubmit = (event) => {
@@ -23,6 +38,15 @@ export const Form = ({ calculateResult, result }) => {
       <Header>
         Przelicznik walut
         </Header>
+        {ratesDate.state === "loading" 
+        ? (
+        <Loading>Ładowanie kursów...
+        </Loading>
+        )
+        : ratesDate.state === "error" ? (
+        <Failure>Błąd pobierania kursów</Failure>
+        ) : (
+          <>
       <p>
         <label>
           <LabelText>
@@ -32,7 +56,6 @@ export const Form = ({ calculateResult, result }) => {
             value={amount}
             onChange={({ target }) => setAmount(target.value)}
             placeholder="Wpisz kwotę w zł"
-            className="form__field"
             type="number"
             required
             step="0.01"
@@ -49,12 +72,12 @@ export const Form = ({ calculateResult, result }) => {
             value={currency}
             onChange={({ target }) => setCurrency(target.value)}
           >
-            {currencies.map((currency => (
+            {Object.keys(ratesDate.rates).map((currency => (
               <option 
-              key={currency.short} 
-              value={currency.short}
+              key={currency}
+              value={currency}
               >
-                {currency.Name}
+                {currency}
             </option>
             )))}
           </Filed>
@@ -64,12 +87,12 @@ export const Form = ({ calculateResult, result }) => {
         <Button>Przelicz</Button>
       </p>
       <Info>
-         Kursy pochodzą ze strony internetowej nbp.pl
+         Kursy walut pobierane z Europejskiego Banku Centralnego z dnia: {ratesDate.date}
       </Info>
        <Result result={result}/>
+        </> 
+        )}
     </form>
-   
-     
   );
 };
 
