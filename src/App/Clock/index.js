@@ -11,7 +11,7 @@ const formatdate = (date) => date.toLocaleTimeString(undefined, {
         month: "long",
   });
 export const Clock = () => {
-  const [date] = useCurrentDate();
+  const date = useCurrentDate();
    
   return (
     <Wrapper>
