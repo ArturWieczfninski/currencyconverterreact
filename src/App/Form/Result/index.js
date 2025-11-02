@@ -4,10 +4,10 @@ export const Result = ({ result}) => {
     <Wrapper>
         {!!result && (
         <>
-        {result.sorceAmount.tofixed(2)}&nbsp;PLN&nbsp;=
+        {result.soruceAmount.toFixed()}&nbsp;PLN&nbsp;=
         {" "}
         <strong>
-        {result.targetAmount.tofixed(2)}&nbsp;{result.currency}
+        {result.targetAmount.toFixed()}&nbsp;{result.currency}
         </strong>
         </>
         )}

@@ -3,7 +3,7 @@ import { currencies } from "../currencies";
 import { Result } from "./Result";
 import { Button, Filed, Header, Info, LabelText } from "./styled";
 
-export const Form = ({ calculateResult, result }) => {
+export const Form = () => {
   const [currency, setCurrency] = useState(currencies[0].short);
   const [amount, setAmount] = useState("");
   const [result, setResult] = useState();
@@ -15,11 +15,12 @@ export const Form = ({ calculateResult, result }) => {
   const calculateResult = (currency, amount) => {
     const rate = currencies.find(({ short }) => short === currency).rate;
 
-    setResult({
-      sourceAmount: +amount,
-      targetAmount: amount / rate,
-      currency,
-    });
+      setResult({
+        sourceAmount: +amount,
+        targetAmount: amount / rate,
+        currency,
+      });
+    };
 
     return (
       <form onSubmit={onSubmit}>
@@ -61,6 +62,4 @@ export const Form = ({ calculateResult, result }) => {
         <Result result={result} />
       </form>
     );
-  };
 };
-export default Form;

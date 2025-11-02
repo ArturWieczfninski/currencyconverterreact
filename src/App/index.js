@@ -8,11 +8,8 @@ import { Wrapper } from './styled';
 function App() {
   return (
     <Wrapper>
-      <Clock />
-      < Form
-      result={result} 
-      calculateResult={calculateResult} 
-      />
+      <Clock/>
+      <Form />
     </Wrapper>
   );
 }
