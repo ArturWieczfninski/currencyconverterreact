@@ -32,7 +32,6 @@ export const Form = () => {
               value={amount}
               onChange={({ target }) => setAmount(target.value)}
               placeholder="Wpisz kwotę w zł"
-              className="form__field"
               type="number"
               required
               step="0.01"

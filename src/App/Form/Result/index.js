@@ -1,15 +1,17 @@
 import { Wrapper } from "./styled";
 
-export const Result = ({ result}) => {
+export const Result = ({result}) => {
+   return (
     <Wrapper>
         {!!result && (
         <>
-        {result.soruceAmount.toFixed()}&nbsp;PLN&nbsp;=
+        {result.sourceAmount.toFixed(2)}&nbsp;PLN&nbsp;=
         {" "}
         <strong>
-        {result.targetAmount.toFixed()}&nbsp;{result.currency}
+        {result.targetAmount.toFixed(2)}&nbsp;{result.currency}
         </strong>
         </>
         )}
     </Wrapper>
+   )
 };
