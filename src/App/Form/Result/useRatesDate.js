@@ -7,7 +7,7 @@ export const useRatesDate = () => {
     useEffect(() => {
         const fetchRatesDate = async () => {
             try {
-                const response = await fetch('cur_live_eXVUMntKdJ2L4mUbmTQWf6rNyYnPQyTJkvnG96RA');
+                const response = await fetch('https://api.currencyapi.com/v3/latest?apikey=cur_live_eXVUMntKdJ2L4mUbmTQWf6rNyYnPQyTJkvnG96RA');
                 if (!response.ok) {
                     throw new Error(response.statusText); 
                 }
