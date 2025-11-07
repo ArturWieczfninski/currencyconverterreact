@@ -42,3 +42,10 @@ export const Info = styled.p`
     text-align: center;
     color: ${({theme}) => theme.colors.emperor};
 `;
+export const Loading= styled.p`
+    color: ${({theme}) => theme.colors.teal};
+
+`;
+export const Faliture= styled.p`
+    color: ${({theme}) => theme.colors.crimson};
+`;

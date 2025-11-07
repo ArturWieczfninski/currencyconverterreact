@@ -1,20 +1,22 @@
 import { useState } from "react";
-import { currencies } from "../currencies";
 import { Result } from "./Result";
-import { Button, Filed, Header, Info, LabelText } from "./styled";
+import { 
+  Button, 
+  Filed,
+   Header, 
+   Info, 
+   LabelText, 
+   Loading, 
+   Faliture } from "./styled";
 
 import { useRatesDate } from "./Result/useRatesDate";
 
+
+
 export const Form = () => {
   const ratesDate = useRatesDate();
-  const [currency, setCurrency] = useState(currencies[0].short);
-  const [amount, setAmount] = useState("");
   const [result, setResult] = useState();
-  const onSubmit = (event) => {
-    event.preventDefault();
-    calculateResult(currency, amount);
-  };
-
+  
   const calculateResult = (currency, amount) => {
     const rate = ratesDate.rates[currency];
 
@@ -25,13 +27,34 @@ export const Form = () => {
     });
   };
 
+  const [currency, setCurrency] = useState("PLN");
+  const [amount, setAmount] = useState("");
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+    calculateResult(currency, amount);
+  };
+
   return (
-    <form onSubmit={onSubmit}>
-      <Header>Przelicznik walut</Header>
+    <form  onSubmit={onSubmit}>
+      <Header>
+        Przelicznik walut
+        </Header>
+        {ratesDate.state === "loading" 
+        ? (
+        <Loading>Ładowanie kursów...
+        </Loading>
+        )
+        : ratesDate.state === "error" ? (
+        <Faliture>Błąd pobierania kursów</Faliture>
+        ) : (
+          <>
       <p>
         <label>
-          <LabelText>Kwota w złotówkach:</LabelText>
-          <Filed
+          <LabelText>
+            Kwota w złotówkach:
+            </LabelText>
+          <Filed        
             value={amount}
             onChange={({ target }) => setAmount(target.value)}
             placeholder="Wpisz kwotę w zł"
@@ -39,30 +62,39 @@ export const Form = () => {
             required
             step="0.01"
           />
-        </label>
-      </p>
-      <p>
-        <br/>
-        <label>
-          <LabelText>Waluta:</LabelText>
+            </label>
+              </p>
+              <p>
+              <label>
+          <LabelText>
+            Waluta:
+            </LabelText>
           <Filed
             as="select"
             value={currency}
             onChange={({ target }) => setCurrency(target.value)}
           >
-            {currencies.map((currency) => (
-              <option key={currency.short} value={currency.short}>
-                {currency.Name}
-              </option>
-            ))}
+            {Object.keys(ratesDate.rates).map((currency => (
+              <option 
+              key={currency}
+              value={currency}
+              >
+                {currency}
+            </option>
+            )))}
           </Filed>
         </label>
       </p>
       <p>
         <Button>Przelicz</Button>
       </p>
-      <Info>Kursy pochodzą z różnych instytucji finansowych</Info>
-      <Result result={result} />
+      <Info>
+         Kursy walut pobierane z Europejskiego Banku Centralnego z dnia: {ratesDate.date}
+      </Info>
+       <Result result={result}/>
+        </> 
+        )}
     </form>
   );
 };
+
