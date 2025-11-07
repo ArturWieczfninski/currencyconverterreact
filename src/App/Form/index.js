@@ -3,7 +3,10 @@ import { currencies } from "../currencies";
 import { Result } from "./Result";
 import { Button, Filed, Header, Info, LabelText } from "./styled";
 
+import { useRatesDate } from "./Result/useRatesDate";
+
 export const Form = () => {
+  const ratesDate = useRatesDate();
   const [currency, setCurrency] = useState(currencies[0].short);
   const [amount, setAmount] = useState("");
   const [result, setResult] = useState();
@@ -13,7 +16,7 @@ export const Form = () => {
   };
 
   const calculateResult = (currency, amount) => {
-    const rate = currencies.find(({ short }) => short === currency).rate;
+    const rate = ratesDate.rates[currency];
 
     setResult({
       sourceAmount: +amount,
@@ -39,6 +42,7 @@ export const Form = () => {
         </label>
       </p>
       <p>
+        <br/>
         <label>
           <LabelText>Waluta:</LabelText>
           <Filed
@@ -57,7 +61,7 @@ export const Form = () => {
       <p>
         <Button>Przelicz</Button>
       </p>
-      <Info>Kursy pochodzą ze strony internetowej nbp.pl</Info>
+      <Info>Kursy pochodzą z różnych instytucji finansowych</Info>
       <Result result={result} />
     </form>
   );

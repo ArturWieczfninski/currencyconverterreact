@@ -5,5 +5,6 @@ export const Wrapper = styled.div`
     font-family: monospace;
     color: ${({theme}) => theme.colors.boulder};
     align-self: flex-end;
+    padding: 20px;
 `;
   
